@@ -422,7 +422,7 @@
 							<animation effect="zoom" end="85" start="100" time="200" center="auto" condition="System.IdleTime(3)">Conditional</animation>
 						<control type="image">
 							<aspectratio scalediffuse="false">scale</aspectratio>
-							<texture background="true" fallback="DefaultMovies.png">$VAR[PosterImage]</texture>
+							<texture background="true">$VAR[PosterImage]</texture>
 						</control>
 						<control type="label">
 							<centerright>34</centerright>
@@ -477,6 +477,17 @@
 							<textcolor>$VAR[ResumeColourHighlight]</textcolor>
 							<selectedcolor>$VAR[ResumeColourHighlight]</selectedcolor>
 							<visible>!stringcompare(ListItem.Label,..) + ListItem.IsResumable</visible>
+						</control>
+						<control type="progress">
+					                <bottom>8</bottom>
+							<height>8</height>
+							<info>ListItem.PercentPlayed</info>
+							<overlaytexture>-</overlaytexture>
+							<texturebg colordiffuse="$VAR[BackingColourHighlight]">osd/progress-bg.png</texturebg>
+							<lefttexture colordiffuse="$VAR[UnwatchedColourHighlight]">osd/progress-end.png</lefttexture>
+							<midtexture colordiffuse="$VAR[UnwatchedColourHighlight]">osd/progress-end.png</midtexture>
+							<righttexture colordiffuse="$VAR[EmbyMenuTextColourHighlight]">osd/progress-end.png</righttexture>
+							<visible>ListItem.IsResumable</visible>
 						</control>
 					</control>
 				</itemlayout>
@@ -542,6 +553,17 @@
 							<selectedcolor>$VAR[ResumeColourHighlight]</selectedcolor>
 							<visible>!stringcompare(ListItem.Label,..) + ListItem.IsResumable</visible>
 						</control>
+						<control type="progress">
+					                <bottom>8</bottom>
+							<height>8</height>
+							<info>ListItem.PercentPlayed</info>
+							<overlaytexture>-</overlaytexture>
+							<texturebg colordiffuse="$VAR[BackingColourHighlight]">osd/progress-bg.png</texturebg>
+							<lefttexture colordiffuse="$VAR[UnwatchedColourHighlight]">osd/progress-end.png</lefttexture>
+							<midtexture colordiffuse="$VAR[UnwatchedColourHighlight]">osd/progress-end.png</midtexture>
+							<righttexture colordiffuse="$VAR[EmbyMenuTextColourHighlight]">osd/progress-end.png</righttexture>
+							<visible>ListItem.IsResumable</visible>
+						</control>
 					</control>
 				</itemlayout>
 				<focusedlayout height="337" width="222" condition="!Container.Content(episodes)">
@@ -551,10 +573,6 @@
 						<onfocus condition="Container.Content(movies)">ClearProperty(TVShowID,home)</onfocus>
 						<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowID,$INFO[ListItem.DBID],home)</onfocus>
 						<onfocus>ClearProperty(cfa_ignore_set,home)</onfocus>
-						<!--
-<onfocus condition="!Skin.HasSetting(low.power)">RunScript(script.colorbox,info=twotone,id='"$VAR[RealFanartImage]"',black='"#000022"',white='"#990000"',prefix=Pixelated)</onfocus>
-<onfocus condition="!Skin.HasSetting(low.power)">RunScript(script.colorbox,info=posterize,id='"$VAR[RealFanartImage]"',bits=2,prefix=Pixelated)</onfocus>
--->
 					</control>
 				</focusedlayout>
 				<focusedlayout height="337" width="600" condition="Container.Content(episodes)">
@@ -647,42 +665,66 @@
 								<visible>!stringcompare(ListItem.Label,..) + ListItem.IsResumable</visible>
 							</control>
 						</control>
+						<control type="progress">
+					                <bottom>8</bottom>
+							<height>8</height>
+							<info>ListItem.PercentPlayed</info>
+							<overlaytexture>-</overlaytexture>
+							<texturebg colordiffuse="$VAR[BackingColourHighlight]">osd/progress-bg.png</texturebg>
+							<lefttexture colordiffuse="$VAR[UnwatchedColourHighlight]">osd/progress-end.png</lefttexture>
+							<midtexture colordiffuse="$VAR[UnwatchedColourHighlight]">osd/progress-end.png</midtexture>
+							<righttexture colordiffuse="$VAR[EmbyMenuTextColourHighlight]">osd/progress-end.png</righttexture>
+							<visible>ListItem.IsResumable</visible>
+						</control>
 					</control>
 				</focusedlayout>
 			</control>
                         <control type="group">
  					<visible>!Container.Content(episodes)</visible>
                            <control type="image">
-								<bottom>22</bottom>
+				<bottom>22</bottom>
                                 <width>1920</width>
-								<right>0</right>
+				<right>0</right>
                                 <align>left</align>
                                 <height>337</height>
                                 <texture colordiffuse="$VAR[EmbyMenuColourHighlight]" flipx="true">diffuse/widget-shadow.png</texture>
                                 <animation effect="fade" start="80" end="80" time="0" delay="0" tween="quadratic" easing="out" condition="true">Conditional</animation>
 								<animation effect="fade" start="80" end="0" time="0" delay="0" tween="quadratic" easing="out" condition="System.IdleTime(3)">Conditional</animation>
                            </control>
-						<control type="image">
-								<top>455</top>
-                                <width>400</width>
-								<right>95</right>
-                                <align>left</align>
-                                <height>603</height>
-							<texture background="true">$VAR[PosterImage518]</texture>
-						</control>
+				<control type="image">
+					<top>455</top>
+					<width>400</width>
+					<right>95</right>
+					<align>left</align>
+					<height>603</height>
+					<texture background="true">$VAR[PosterImage518]</texture>
+				</control>
+				<control type="progress">
+					<top>1050</top>
+					<width>400</width>
+					<right>95</right>
+					<height>8</height>
+					<info>Container(518).ListItem.PercentPlayed</info>
+					<overlaytexture>-</overlaytexture>
+					<texturebg colordiffuse="$VAR[BackingColourHighlight]">osd/progress-bg.png</texturebg>
+					<lefttexture colordiffuse="$VAR[UnwatchedColourHighlight]">osd/progress-end.png</lefttexture>
+					<midtexture colordiffuse="$VAR[UnwatchedColourHighlight]">osd/progress-end.png</midtexture>
+					<righttexture colordiffuse="$VAR[EmbyMenuTextColourHighlight]">osd/progress-end.png</righttexture>
+					<visible>Container(518).ListItem.IsResumable</visible>
+				</control>
                         <control type="group">
-								<top>481</top>
-						<control type="label">
-							<animation effect="zoom" end="180" start="100" time="0" center="auto" condition="true">Conditional</animation>
-							<centerright>160</centerright>
-							<centertop>34</centertop>
-							<width>40</width>
-							<height>40</height>
-							<font>symbolback</font>
-							<label>$VAR[PercentWatchedBack518]</label>
-							<textcolor>$VAR[BackingColourHighlight]</textcolor>
-							<selectedcolor>$VAR[BackingColourHighlight]</selectedcolor>
-						</control>
+				<top>481</top>
+				<control type="label">
+					<animation effect="zoom" end="180" start="100" time="0" center="auto" condition="true">Conditional</animation>
+					<centerright>160</centerright>
+					<centertop>34</centertop>
+					<width>40</width>
+					<height>40</height>
+					<font>symbolback</font>
+					<label>$VAR[PercentWatchedBack518]</label>
+					<textcolor>$VAR[BackingColourHighlight]</textcolor>
+					<selectedcolor>$VAR[BackingColourHighlight]</selectedcolor>
+				</control>
 						<control type="label">
 							<animation effect="zoom" end="180" start="100" time="0" center="auto" condition="true">Conditional</animation>
 							<centerright>156</centerright>
